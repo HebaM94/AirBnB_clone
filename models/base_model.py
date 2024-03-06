@@ -2,7 +2,6 @@
 """base module"""
 import uuid
 import datetime
-import json
 
 
 class BaseModel:
