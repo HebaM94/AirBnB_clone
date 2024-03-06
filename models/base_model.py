@@ -6,8 +6,6 @@ import datetime
 
 class BaseModel:
     """creating Base class"""
-    __nb_objects = 0
-
     def __init__(self, *args, **kwargs):
         """defines all common attributes/methods for other classes"""
         if len(kwargs) > 0:
