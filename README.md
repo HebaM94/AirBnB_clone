@@ -1,1 +1,1 @@
-<h3 align="center"> **Project: AirBnB clone - The console> </h3>
+<h1 align="center"> Project: AirBnB clone - The console </h1>
