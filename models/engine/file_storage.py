@@ -38,12 +38,13 @@ class FileStorage:
                     class_name, obj_id = key.split('.')
                     # Convert datetime strings to datetime objects
                     value['created_at'] = datetime.datetime.strptime\
-                            (value['created_at'], "%Y-%m-%dT%H:%M:%S.%f")
+                        (value['created_at'], "%Y-%m-%dT%H:%M:%S.%f")
                     value['updated_at'] = datetime.datetime.strptime\
-                            (value['updated_at'], "%Y-%m-%dT%H:%M:%S.%f")
+                        (value['updated_at'], "%Y-%m-%dT%H:%M:%S.%f")
                     # Recreate BaseModel objects
                     obj = BaseModel(**value)
-                    obj.__class__.__name__ = class_name  # Assign class name to obj
+                    # Assign class name to obj
+                    obj.__class__.__name__ = class_name
                     obj.id = obj_id  # Assign object ID to obj
                     self.__objects[key] = obj
         except FileNotFoundError:
