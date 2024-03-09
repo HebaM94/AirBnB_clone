@@ -58,11 +58,12 @@ class HBNBCommand(cmd.Cmd):
                 return
             else:
                 obj_id = args[1]
-                if "{}.{}".format(class_name, obj_id) not in storage.all:
+                key = "{}.{}".format(class_name, obj_id)
+                if key not in storage.all():
                     print("** no instance found **")
                     return
  #9c2e040f-be13-4601-9f68-753c61327524
-                print(storage.all()["{}.{}".format(class_name, obj_id)])
+                print(storage.all()[key])
 
     def do_destroy(self, arg):
         """Deletes an instance based on the class name
