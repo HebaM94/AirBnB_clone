@@ -37,10 +37,10 @@ class FileStorage:
                 for key, value in loaded_objects.items():
                     class_name, obj_id = key.split('.')
                     # Convert datetime strings to datetime objects
-                    value['created_at'] = datetime.datetime.strptime\
-                    (value['created_at'], "%Y-%m-%dT%H:%M:%S.%f")
-                    value['updated_at'] = datetime.datetime.strptime\
-                    (value['updated_at'], "%Y-%m-%dT%H:%M:%S.%f")
+                    value['created_at'] = datetime.datetime.strptime(
+                        value['created_at'], "%Y-%m-%dT%H:%M:%S.%f")
+                    value['updated_at'] = datetime.datetime.strptime(
+                        value['updated_at'], "%Y-%m-%dT%H:%M:%S.%f")
                     # Recreate BaseModel objects
                     obj = BaseModel(**value)
                     # Assign class name to obj
