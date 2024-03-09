@@ -12,7 +12,7 @@ class FileStorage:
     def all(self):
         """Return the dictionary __objects."""
         return self.__objects
-    
+
     def new(self, obj):
         """Set in __objects the obj with key <obj class name>.id"""
         self.__objects["{}.{}".format(obj.__class__.__name__, obj.id)] = obj
@@ -37,8 +37,10 @@ class FileStorage:
                 for key, value in loaded_objects.items():
                     class_name, obj_id = key.split('.')
                     # Convert datetime strings to datetime objects
-                    value['created_at'] = datetime.datetime.strptime(value['created_at'], "%Y-%m-%dT%H:%M:%S.%f")
-                    value['updated_at'] = datetime.datetime.strptime(value['updated_at'], "%Y-%m-%dT%H:%M:%S.%f")
+                    value['created_at'] = datetime.datetime.strptime\
+                            (value['created_at'], "%Y-%m-%dT%H:%M:%S.%f")
+                    value['updated_at'] = datetime.datetime.strptime\
+                            (value['updated_at'], "%Y-%m-%dT%H:%M:%S.%f")
                     # Recreate BaseModel objects
                     obj = BaseModel(**value)
                     obj.__class__.__name__ = class_name  # Assign class name to obj
