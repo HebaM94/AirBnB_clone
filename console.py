@@ -19,7 +19,12 @@ class HBNBCommand(cmd.Cmd):
         print("")
         return True
     
-    def do_creat(self, arg):
+    def emptyline(self):
+        """override the cmd emptyline function to do nothing
+        if empty line and enter passed to console"""
+        pass
+
+    def do_create(self, arg):
         """Create a new object Class(arg)"""
         if len(arg) == 0:
             print("** class name missing **")
@@ -46,6 +51,6 @@ class HBNBCommand(cmd.Cmd):
 
     def do_update(self, arg):
         """"""
-    
+
 if __name__ == '__main__':
     HBNBCommand().cmdloop()
