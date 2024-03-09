@@ -2,6 +2,13 @@
 """storage module"""
 import datetime
 import json
+from models.base_model import BaseModel
+from models.amenity import Amenity
+from models.city import City
+from models.place import Place
+from models.review import Review
+from models.state import State
+from models.user import User
 
 
 class FileStorage:
@@ -29,13 +36,6 @@ class FileStorage:
 
     def reload(self):
         """Deserialize the JSON file to __objects."""
-        from models.base_model import BaseModel
-        from models.amenity import Amenity
-        from  models.city import City
-        from  models.place import Place
-        from  models.review import Review
-        from  models.state import State
-        from  models.user import User
         try:
             with open(self.__file_path, 'r', encoding="utf-8") as file:
                 new = file.read()
