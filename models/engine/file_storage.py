@@ -21,8 +21,9 @@ class FileStorage:
         """Serialize __objects to the JSON file."""
         if len(self.__objects) > 0:
             new_dict = {}
-            for key in self.__objects:
-                new_dict[key] = self.__objects[key].to_dict()
+            the_copy = self.__objects.copy()
+            for key in the_copy:
+                new_dict[key] = the_copy[key].to_dict()
 
         with open(self.__file_path, 'w', encoding="utf-8") as file:
             file.write(json.dumps(new_dict, indent=4))
@@ -30,6 +31,13 @@ class FileStorage:
     def reload(self):
         """Deserialize the JSON file to __objects."""
         from models.base_model import BaseModel
+        from models.amenity import Amenity
+        from city import City
+        from place import Place
+        from review import Review
+        from state import State
+        from user import User
+
         try:
             with open(self.__file_path, 'r', encoding="utf-8") as file:
                 new = file.read()
