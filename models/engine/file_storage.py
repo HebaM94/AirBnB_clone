@@ -50,8 +50,8 @@ class FileStorage:
                     # Recreate BaseModel objects
                     obj = BaseModel(**value)
                     # Assign class name to obj
-                    obj.__class__.__name__ = class_name
-                    obj.id = obj_id  # Assign object ID to obj
+                    # obj.__class__.__name__ = class_name
+                    # obj.id = obj_id  # Assign object ID to obj
                     self.__objects[key] = obj
         except FileNotFoundError:
             pass
