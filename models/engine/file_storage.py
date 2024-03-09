@@ -36,7 +36,6 @@ class FileStorage:
         from review import Review
         from state import State
         from user import User
-
         try:
             with open(self.__file_path, 'r', encoding="utf-8") as file:
                 new = file.read()
