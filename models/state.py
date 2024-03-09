@@ -1,6 +1,6 @@
 #!/usr/bin/python3
 """User module"""
-from models import BaseModel
+from models.base_model import BaseModel
 
 
 class State(BaseModel):
