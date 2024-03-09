@@ -93,12 +93,12 @@ class HBNBCommand(cmd.Cmd):
         based or not on the class name"""
         if len(arg) > 0:
             class_name = arg.split()[0]
-            if class_name != "BaseModel":
-                print("** class doesn't exist **")
-                return
-            for obj in storage.all().values():
-                if len(arg) == 0 or obj.__class__.__name__ == class_name:
-                    print(str(obj))
+        if class_name != "BaseModel":
+            print("** class doesn't exist **")
+            return
+        for obj in storage.all().values():
+            if len(arg) == 0 or obj.__class__.__name__ == class_name:
+                print(str(obj))
 
     def do_update(self, arg):
         """Updates an instance based on the class name and id
