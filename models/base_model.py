@@ -2,7 +2,7 @@
 """base module"""
 import uuid
 import datetime
-from models import storage
+import models
 
 
 class BaseModel:
@@ -25,12 +25,12 @@ class BaseModel:
         self.id = str(uuid.uuid4())
         self.created_at = datetime.datetime.now()
         self.updated_at = datetime.datetime.now()
-        storage.new(self)
+        models.storage.new(self)
 
     def save(self):
         """saves object into the database"""
         self.updated_at = datetime.datetime.now()
-        storage.save()
+        models.storage.save()
 
     def to_dict(self):
         """returns dict. containing all keys/values of __dict__ of instance"""
