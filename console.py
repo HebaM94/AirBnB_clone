@@ -62,7 +62,7 @@ class HBNBCommand(cmd.Cmd):
                 if key not in storage.all():
                     print("** no instance found **")
                     return
-                print(storage.all()[key])
+                str(storage.all()[key])
 
     def do_destroy(self, arg):
         """Deletes an instance based on the class name
@@ -91,6 +91,16 @@ class HBNBCommand(cmd.Cmd):
     def do_all(self, arg):
         """Prints all string representation of all instances
         based or not on the class name"""
+        if arg == 0:
+            print(storage.all())
+            return
+        else:
+            args = arg.split()
+            class_name = args[0]
+            if class_name != "BaseModel":
+                print("** class doesn't exist **")
+                return
+            str(storage.all()[class_name])
 
     def do_update(self, arg):
         """Updates an instance based on the class name and id
