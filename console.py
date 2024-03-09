@@ -93,8 +93,8 @@ class HBNBCommand(cmd.Cmd):
         based or not on the class name"""
         args = arg.split()
         if len(args) > 0 and args[0] != "BaseModel":
-                print("** class doesn't exist **")
-                return
+            print("** class doesn't exist **")
+            return
         for obj in storage.all().values():
             if len(arg) == 0 or obj.__class__.__name__ == args[0]:
                 print(str(obj))
