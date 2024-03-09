@@ -13,14 +13,14 @@ class BaseModel:
             for key, value in kwargs.items():
                 if key != "__class__":
                     setattr(self, key, value)
-            # if 'created_at' in kwargs and\
-            # isinstance(kwargs['created_at'], str):
-            self.created_at = datetime.datetime.strptime(
-                self.created_at, "%Y-%m-%dT%H:%M:%S.%f")
-            # if 'updated_at' in kwargs and\
-            # isinstance(kwargs['updated_at'], str):
-            self.updated_at = datetime.datetime.strptime(
-                self.updated_at, "%Y-%m-%dT%H:%M:%S.%f")
+            if 'created_at' in kwargs and\
+                isinstance(kwargs['created_at'], str):
+                self.created_at = datetime.datetime.strptime(
+                    self.created_at, "%Y-%m-%dT%H:%M:%S.%f")
+            if 'updated_at' in kwargs and\
+                isinstance(kwargs['updated_at'], str):
+                self.updated_at = datetime.datetime.strptime(
+                    self.updated_at, "%Y-%m-%dT%H:%M:%S.%f")
             return
         self.id = str(uuid.uuid4())
         self.created_at = datetime.datetime.now()
