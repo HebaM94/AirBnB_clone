@@ -48,7 +48,7 @@ class FileStorage:
                     # value['updated_at'] = datetime.datetime.strptime(
                     #         value['updated_at'], "%Y-%m-%dT%H:%M:%S.%f")
                     # Recreate BaseModel objects
-                    obj = BaseModel(**value)
+                    obj = BaseModel(value)
                     # Assign class name to obj
                     # obj.__class__.__name__ = class_name
                     # obj.id = obj_id  # Assign object ID to obj
