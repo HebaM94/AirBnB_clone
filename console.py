@@ -50,17 +50,18 @@ class HBNBCommand(cmd.Cmd):
         else:
             args = arg.split()
             class_name = args[0]
-            obj_id = args[1]
             if class_name != "BaseModel":
                 print("** class doesn't exist **")
                 return
             elif len(args) < 2:
                 print("** instance id missing **")
                 return
-            elif "{}.{}".format(class_name, obj_id) not in storage.all:
-                print("** no instance found **")
-                return
-            else: #9c2e040f-be13-4601-9f68-753c61327524
+            else:
+                obj_id = args[1]
+                if "{}.{}".format(class_name, obj_id) not in storage.all:
+                    print("** no instance found **")
+                    return
+ #9c2e040f-be13-4601-9f68-753c61327524
                 print(storage.all()["{}.{}".format(class_name, obj_id)])
 
     def do_destroy(self, arg):
