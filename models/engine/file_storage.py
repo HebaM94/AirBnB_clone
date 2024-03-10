@@ -28,7 +28,7 @@ class FileStorage:
         if len(FileStorage.__objects) > 0:
             new_dict = {}
             for key, obj in FileStorage.__objects.items():
-                new_dict[key] = obj.to_dict()
+                new_dict[key] = obj.to_dict().copy()
 
         with open(FileStorage.__file_path, 'w', encoding="utf-8") as file:
             file.write(json.dumps(new_dict, indent=4))
