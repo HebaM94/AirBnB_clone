@@ -9,7 +9,9 @@ import json
 
 class HBNBCommand(cmd.Cmd):
     """Interactive command line interface."""
-    prompt = '(hbnb) '
+    prompt = '(hbnb)'
+    __classes = {"BaseModel", "User", "State", "City",
+            "Amenity", "Place", "Review"}
 
     def do_quit(self, arg):
         """Quit command to exit the program"""
@@ -50,7 +52,7 @@ class HBNBCommand(cmd.Cmd):
         else:
             args = arg.split()
             class_name = args[0]
-            if class_name != "BaseModel":
+            if class_name not in self.__classes:
                 print("** class doesn't exist **")
                 return
             elif len(args) < 2:
@@ -73,7 +75,7 @@ class HBNBCommand(cmd.Cmd):
         else:
             args = arg.split()
             class_name = args[0]
-            if class_name != "BaseModel":
+            if class_name not in self.__classes:
                 print("** class doesn't exist **")
                 return
             elif len(args) < 2:
@@ -92,7 +94,7 @@ class HBNBCommand(cmd.Cmd):
         """Prints all string representation of all instances
         based or not on the class name"""
         args = arg.split()
-        if len(args) > 0 and args[0] != "BaseModel":
+        if len(args) > 0 and args[0] not in self.__classes:
             print("** class doesn't exist **")
             return
         for obj in storage.all().values():
@@ -108,7 +110,7 @@ class HBNBCommand(cmd.Cmd):
         else:
             args = arg.split()
             class_name = args[0]
-            if class_name != "BaseModel":
+            if class_name not in self.__classes:
                 print("** class doesn't exist **")
                 return
             elif len(args) < 2:
@@ -133,7 +135,7 @@ class HBNBCommand(cmd.Cmd):
                         attr_value = args[3]
                         if attr_name in {'id', 'created_at', 'updated_at'}:
                             return
-                        elif attr_name not in obj.keys():
+                        elif attr_name not in obj[key].keys():
                             obj[key].__setattr__(self, attr_name, attr_value)
                         else:
                             obj[key].__dict__[attr_name] = attr_value
