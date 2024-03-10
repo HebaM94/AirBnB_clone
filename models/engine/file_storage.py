@@ -28,8 +28,8 @@ class FileStorage:
         """Serialize __objects to the JSON file."""
         if len(self.__objects) > 0:
             new_dict = {}
-            for key in self.__objects:
-                new_dict[key] = self.__objects[key].to_dict()
+            for key, obj in self.__objects:
+                new_dict[key] = obj.to_dict()
 
         with open(self.__file_path, 'w', encoding="utf-8") as file:
             file.write(json.dumps(new_dict, indent=4))
@@ -38,8 +38,7 @@ class FileStorage:
         """Deserialize the JSON file to __objects."""
         try:
             with open(self.__file_path, 'r', encoding="utf-8") as file:
-                new = file.read()
-                loaded_objects = json.loads(new)
+                loaded_objects = json.loads(file)
                 for key, value in loaded_objects.items():
                     class_name, obj_id = key.split('.')
                     # Convert datetime strings to datetime objects
@@ -48,10 +47,10 @@ class FileStorage:
                     # value['updated_at'] = datetime.datetime.strptime(
                     #         value['updated_at'], "%Y-%m-%dT%H:%M:%S.%f")
                     # Recreate BaseModel objects
-                    obj = BaseModel(value)
+                    obj = BaseModel(**value)
                     # Assign class name to obj
                     # obj.__class__.__name__ = class_name
                     # obj.id = obj_id  # Assign object ID to obj
-                    self.__objects[key] = obj
+                    self.__objects[["{}.{}".format(class_name, obj_id)]] = obj
         except FileNotFoundError:
             pass
