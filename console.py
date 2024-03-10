@@ -40,7 +40,7 @@ class HBNBCommand(cmd.Cmd):
                 return
             else:
                 new_obj = eval(class_name)()
-                storage.save()
+                new_obj.save()
                 print("{}".format(new_obj.id))
 
     def do_show(self, arg):
@@ -64,7 +64,7 @@ class HBNBCommand(cmd.Cmd):
                 if key not in storage.all():
                     print("** no instance found **")
                     return
-                print(str(storage.all()[key]))
+                print(storage.all()[key])
 
     def do_destroy(self, arg):
         """Deletes an instance based on the class name
@@ -99,9 +99,11 @@ class HBNBCommand(cmd.Cmd):
             return
         obj_list = []
         for obj in storage.all().values():
-            if len(args) == 0 or obj.__class__.__name__ == args[0]:
-                object_list.append(str(obj))
-            print(object_list)
+            if len(args) == 0:
+                obj_list.append(str(obj))
+            elif obj.__class__.__name__ == args[0]:
+                obj_list.append(str(obj))
+            print(obj_list)
 
     def do_update(self, arg):
         """Updates an instance based on the class name and id
