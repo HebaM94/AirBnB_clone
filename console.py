@@ -35,11 +35,11 @@ class HBNBCommand(cmd.Cmd):
             return
         else:
             class_name = arg.split()[0]
-            if class_name != "BaseModel":
+            if class_name not in self.__classes:
                 print("** class doesn't exist **")
                 return
             else:
-                new_obj = BaseModel()
+                new_obj = eval(class_name)()
                 new_obj.save()
                 print("{}".format(new_obj.id))
 
@@ -123,6 +123,7 @@ class HBNBCommand(cmd.Cmd):
                     print("** no instance found **")
                     return
                 else:
+                    obj = storage.all()[key]
                     if len(args) < 3:
                         print("** attribute name missing **")
                         return
@@ -130,13 +131,12 @@ class HBNBCommand(cmd.Cmd):
                         print("** value missing **")
                         return
                     else:
-                        obj = storage.all().__class__.__dict__
                         attr_name = args[2]
                         attr_value = args[3]
                         if attr_name in {'id', 'created_at', 'updated_at'}:
                             return
                         elif attr_name not in obj[key].keys():
-                            obj[key].__setattr__(self, attr_name, attr_value)
+                            setattr(obj, attr_name, attr_value)
                         else:
                             obj[key].__dict__[attr_name] = attr_value
                         storage.save()
