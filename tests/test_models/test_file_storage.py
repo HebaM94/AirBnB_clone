@@ -1,9 +1,21 @@
 import unittest
 from models.engine.file_storage import FileStorage
 from models.base_model import BaseModel
+import os
 
 class TestFileStorage(unittest.TestCase):
     """Testing FileStorage class."""
+
+    def setUp(self):
+        """Set up test environment."""
+        # Create an instance of FileStorage
+        self.storage = FileStorage()
+
+    def tearDown(self):
+        """Clean up after the test."""
+        # Remove the file created during testing
+        if os.path.exists("file.json"):
+            os.remove("file.json")
 
     def test_all(self):
         """Test the all() method."""
