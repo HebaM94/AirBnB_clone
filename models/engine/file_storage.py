@@ -38,7 +38,8 @@ class FileStorage:
         """Deserialize the JSON file to __objects."""
         try:
             with open(self.__file_path, 'r', encoding="utf-8") as file:
-                loaded_objects = json.loads(file)
+                new = file.read()
+                loaded_objects = json.loads(new)
                 for key, value in loaded_objects.items():
                     class_name, obj_id = key.split('.')
                     # Convert datetime strings to datetime objects
