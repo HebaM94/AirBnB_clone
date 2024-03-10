@@ -41,7 +41,7 @@ class FileStorage:
                 loaded_objects = json.loads(new)
                 for key, value in loaded_objects.items():
                     class_name = value.get('__class__')
-                    obj = BaseModel(**value)
+                    obj = eval(class_name)(**value)
                     self.__objects[key] = obj
         except FileNotFoundError:
             pass
