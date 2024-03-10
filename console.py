@@ -40,7 +40,7 @@ class HBNBCommand(cmd.Cmd):
                 return
             else:
                 new_obj = eval(class_name)()
-                new_obj.save()
+                storage.save()
                 print("{}".format(new_obj.id))
 
     def do_show(self, arg):
@@ -97,9 +97,11 @@ class HBNBCommand(cmd.Cmd):
         if len(args) > 0 and args[0] not in self.__classes:
             print("** class doesn't exist **")
             return
+        obj_list = []
         for obj in storage.all().values():
-            if len(arg) == 0 or obj.__class__.__name__ == args[0]:
-                print(str(obj))
+            if len(args) == 0 or obj.__class__.__name__ == args[0]:
+                object_list.append(str(obj))
+            print(object_list)
 
     def do_update(self, arg):
         """Updates an instance based on the class name and id
