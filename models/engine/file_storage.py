@@ -40,7 +40,8 @@ class FileStorage:
             with open(self.__file_path, 'r', encoding="utf-8") as file:
                 loaded_objects = json.load(file)
                 for key, value in loaded_objects.items():
-                    obj = BaseModel(**value)
-                    self.new(obj)
+                    class_name, obj_id = key.split('.')
+                    obj = eval(class_name)(**value)
+                    self.__objects[key] = obj
         except FileNotFoundError:
             pass
