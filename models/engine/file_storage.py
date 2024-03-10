@@ -38,7 +38,8 @@ class FileStorage:
         """Deserialize the JSON file to __objects."""
         try:
             with open(FileStorage.__file_path, 'r', encoding="utf-8") as file:
-                loaded_objects = json.load(file)
+                new = file.read()
+                loaded_objects = json.load(new)
                 for value in loaded_objects.values():
                     class_name = value['__class__']
                     obj = eval(class_name)(**value)
