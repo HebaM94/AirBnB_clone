@@ -52,6 +52,6 @@ class FileStorage:
                     # Assign class name to obj
                     # obj.__class__.__name__ = class_name
                     # obj.id = obj_id  # Assign object ID to obj
-                    self.__objects[["{}.{}".format(class_name, obj_id)]] = obj
+                    self.new(obj)
         except FileNotFoundError:
             pass
