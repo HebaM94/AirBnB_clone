@@ -1,6 +1,7 @@
 import unittest
 from models.city import City
 
+
 class TestCity(unittest.TestCase):
     """Testing City class"""
 
@@ -20,6 +21,7 @@ class TestCity(unittest.TestCase):
         city.state_id = "Alex"
         self.assertEqual(city.name, "Alexandria")
         self.assertEqual(city.state_id, "Alex")
+
 
 if __name__ == '__main__':
     unittest.main()

@@ -1,6 +1,7 @@
 import unittest
 from models.amenity import Amenity
 
+
 class TestAmenity(unittest.TestCase):
     """Teating Amenity class"""
 
@@ -16,6 +17,7 @@ class TestAmenity(unittest.TestCase):
         amenity = Amenity()
         amenity.name = "pool"
         self.assertEqual(amenity.name, "pool")
+
 
 if __name__ == '__main__':
     unittest.main()
