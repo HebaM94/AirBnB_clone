@@ -19,7 +19,7 @@ class BaseModel:
                     self.__dict__[key] = datetime.datetime.strptime(
                         value, "%Y-%m-%dT%H:%M:%S.%f")
                 elif key != "__class__":
-                    setattr(self, key, value)
+                    self.__dict__[key]  = value
         else:
             self.id = str(uuid.uuid4())
             self.created_at = datetime.datetime.now()
