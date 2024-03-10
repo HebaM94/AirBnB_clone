@@ -139,10 +139,10 @@ class HBNBCommand(cmd.Cmd):
                         attr_value = args[3]
                         if attr_name in {'id', 'created_at', 'updated_at'}:
                             return
-                        elif attr_name not in obj[key].keys():
+                        elif attr_name not in obj.keys():
                             setattr(obj, attr_name, attr_value)
                         else:
-                            obj[key].__dict__[attr_name] = attr_value
+                            obj.__dict__[attr_name] = attr_value
                         storage.save()
 
 
