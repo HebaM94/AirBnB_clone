@@ -7,7 +7,7 @@ import models
 
 class BaseModel:
     """creating Base class"""
-    
+
     def __init__(self, *args, **kwargs):
         """defines all common attributes/methods for other classes"""
         if len(kwargs) > 0:
