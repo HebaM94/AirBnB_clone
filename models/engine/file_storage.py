@@ -37,7 +37,7 @@ class FileStorage:
     def reload(self):
         """Deserialize the JSON file to __objects."""
         try:
-            with open(self.__file_path, 'r', encoding="utf-8") as file:
+            with open(FileStorage.__file_path, 'r', encoding="utf-8") as file:
                 loaded_objects = json.load(file)
                 for value in loaded_objects.values():
                     class_name = value['__class__']
