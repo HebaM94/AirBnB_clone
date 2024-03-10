@@ -1,10 +1,23 @@
 import unittest
 from models.base_model import BaseModel
+from models.engine.file_storage import FileStorage
 import datetime
-
+import os
 
 class TestBase(unittest.TestCase):
     """Unit tests for the BaseModel."""
+    
+    def setUp(self):
+        """Set up test environment."""
+        # Create an instance of FileStorage
+        self.storage = FileStorage()
+
+    def tearDown(self):
+        """Clean up after the test."""
+        # Remove the file created during testing
+        if os.path.exists("file.json"):
+            os.remove("file.json")
+
     def test_init(self):
         """Test initialization of BaseModel."""
         # Testing instance without kwargs
@@ -62,6 +75,30 @@ class TestBase(unittest.TestCase):
         base_model = BaseModel()
         base_model.save()
         self.assertIsInstance(base_model.updated_at, datetime.datetime)
+
+    def test_created_at_updated_at(self):
+        """Test created_at and updated_at attributes."""
+        base_model = BaseModel()
+        self.assertIsInstance(base_model.created_at, datetime.datetime)
+        self.assertIsInstance(base_model.updated_at, datetime.datetime)
+
+    def test_save(self):
+        """Test the save() method."""
+        # Create a BaseModel instance
+        base_model = BaseModel()
+        
+        # Add the object to the storage
+        self.storage.new(base_model)
+
+        # Save the objects to the file
+        self.storage.save()
+
+        # Reload the file to check if the object is saved
+        new_storage = FileStorage()
+        new_storage.reload()
+
+        # Assert that the object exists in the reloaded storage
+        self.assertIn("BaseModel." + base_model.id, new_storage.all())
 
 
 if __name__ == '__main__':
