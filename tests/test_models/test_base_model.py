@@ -51,6 +51,18 @@ class TestBase(unittest.TestCase):
         )
         self.assertEqual(str(base_model), expected_output)
 
+    def test_update_attributes(self):
+        """Test updating attributes"""
+        base_model = BaseModel()
+        base_model.name = 'New Name'
+        self.assertEqual(base_model.name, 'New Name')
+
+    def test_save_method(self):
+        """Test save method"""
+        base_model = BaseModel()
+        base_model.save()
+        self.assertIsInstance(base_model.updated_at, datetime.datetime)
+
 
 if __name__ == '__main__':
     unittest.main()
