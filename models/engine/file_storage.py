@@ -40,8 +40,8 @@ class FileStorage:
             with open(self.__file_path, 'r', encoding="utf-8") as file:
                 new = file.read()
                 loaded_objects = json.loads(new)
-                for key, value in loaded_objects.items():
-                    class_name, obj_id = key.split('.')
+                for value in loaded_objects.values():
+                    #class_name, obj_id = key.split('.')
                     # Convert datetime strings to datetime objects
                     # value['created_at'] = datetime.datetime.strptime(
                     #         value['created_at'], "%Y-%m-%dT%H:%M:%S.%f")
