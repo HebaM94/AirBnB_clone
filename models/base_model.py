@@ -11,14 +11,12 @@ class BaseModel:
     def __init__(self, *args, **kwargs):
         """defines all common attributes/methods for other classes"""
         if len(kwargs) > 0:
+            kwargs['created_at'] = datetime.datetime.strptime(
+                kwargs['created_at'], "%Y-%m-%dT%H:%M:%S.%f")
+            kwargs['updated_at'] = datetime.datetime.strptime(
+                kwargs['updated_at'], "%Y-%m-%dT%H:%M:%S.%f")
             for key, value in kwargs.items():
-                if key == 'created_at':
-                    kwargs['created_at'] = datetime.datetime.strptime(
-                        kwargs['created_at'], "%Y-%m-%dT%H:%M:%S.%f")
-                elif key == 'updated_at':
-                    kwargs['updated_at'] = datetime.datetime.strptime(
-                        kwargs['updated_at'], "%Y-%m-%dT%H:%M:%S.%f")
-                elif key != "__class__":
+                if key != "__class__":
                     setattr(self, key, value)
         else:
             self.id = str(uuid.uuid4())
