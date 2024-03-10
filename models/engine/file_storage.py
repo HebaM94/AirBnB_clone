@@ -1,6 +1,5 @@
 #!/usr/bin/python3
 """storage module"""
-import datetime
 import json
 from models.base_model import BaseModel
 from models.amenity import Amenity
@@ -39,9 +38,9 @@ class FileStorage:
         try:
             with open(self.__file_path, 'r', encoding="utf-8") as file:
                 new = file.read()
-                loaded_objects = json.load(new)
-                for key, value in loaded_objects.values():
-                    class_name = key.split('.')
+                loaded_objects = json.loads(new)
+                for key, value in loaded_objects.items():
+                    class_name = key.split('.')[0]
                     obj = eval(class_name)(**value)
                     self.new(obj)
         except FileNotFoundError:
