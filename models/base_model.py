@@ -1,5 +1,5 @@
 #!/usr/bin/python3
-"""base module"""
+"""BaseModel Class"""
 import uuid
 import datetime
 import models
@@ -7,6 +7,7 @@ import models
 
 class BaseModel:
     """creating Base class"""
+    
     def __init__(self, *args, **kwargs):
         """defines all common attributes/methods for other classes"""
         if len(kwargs) > 0:
@@ -16,16 +17,16 @@ class BaseModel:
             if 'created_at' in kwargs and\
                     isinstance(kwargs['created_at'], str):
                 self.created_at = datetime.datetime.strptime(
-                    self.created_at, "%Y-%m-%dT%H:%M:%S.%f")
+                    kwargs['created_at'], "%Y-%m-%dT%H:%M:%S.%f")
             if 'updated_at' in kwargs and\
                     isinstance(kwargs['updated_at'], str):
                 self.updated_at = datetime.datetime.strptime(
-                    self.updated_at, "%Y-%m-%dT%H:%M:%S.%f")
-        else:
-            self.id = str(uuid.uuid4())
-            self.created_at = datetime.datetime.now()
-            self.updated_at = datetime.datetime.now()
-            models.storage.new(self)
+                    kwargs['updated_at'], "%Y-%m-%dT%H:%M:%S.%f")
+            return
+        self.id = str(uuid.uuid4())
+        self.created_at = datetime.datetime.now()
+        self.updated_at = datetime.datetime.now()
+        models.storage.new(self)
 
     def save(self):
         """saves object into the database"""
