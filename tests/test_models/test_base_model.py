@@ -78,8 +78,8 @@ class TestBase(unittest.TestCase):
     def test_update_attributes(self):
         """Test updating attributes"""
         base_model = BaseModel()
-        base_model.name = 'New Name'
-        self.assertEqual(base_model.name, 'New Name')
+        setattr(base_model, 'name', 'New Name')
+        self.assertEqual(getattr(base_model, 'name'), 'New Name')
 
     def test_save_method(self):
         """Test save method"""
@@ -92,8 +92,9 @@ class TestBase(unittest.TestCase):
     def test_created_at_updated_at(self):
         """Test created_at and updated_at attributes."""
         base_model = BaseModel()
-        self.assertIsInstance(base_model.created_at, datetime.datetime)
-        self.assertIsInstance(base_model.updated_at, datetime.datetime)
+        self.assertEqual(base_model.created_at, base_model.updated_at)
+        self.assertIsInstance(base_model.created_at, datetime.datetime.now())
+        self.assertIsInstance(base_model.updated_at, datetime.datetime.now())
 
     def test_save(self):
         """Test the save() method."""
