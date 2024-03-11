@@ -148,7 +148,8 @@ class HBNBCommand(cmd.Cmd):
                         elif attr_name not in obj.keys():
                             setattr(obj, attr_name, attr_value)
                         else:
-                            obj.__dict__[attr_name] = attr_value
+                            attr_type = type(obj.__class__.__dict__[attr_name])
+                            obj.__dict__[attr_name] = attr_type(attr_value)
                         storage.save()
 
 
