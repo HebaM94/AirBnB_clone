@@ -86,8 +86,33 @@ class TestBase(unittest.TestCase):
         base_model = BaseModel()
         base_model.save()
         self.assertIsInstance(base_model.updated_at, datetime.datetime)
+
+    def test_one_save(self):
+        bm = BaseModel()
+        first_updated_at = bm.updated_at
+        bm.save()
+        self.assertLess(first_updated_at, bm.updated_at)
+
+    def test_two_saves(self):
+        bm = BaseModel()
+        first_updated_at = bm.updated_at
+        bm.save()
+        second_updated_at = bm.updated_at
+        self.assertLess(first_updated_at, second_updated_at)
+        bm.save()
+        self.assertLess(second_updated_at, bm.updated_at)
+
+    def test_save_with_arg(self):
+        bm = BaseModel()
         with self.assertRaises(TypeError):
-            base_model.save(None)
+            bm.save(None)
+
+    def test_save_updates_file(self):
+        bm = BaseModel()
+        bm.save()
+        bmid = "BaseModel." + bm.id
+        with open("file.json", "r") as f:
+            self.assertIn(bmid, f.read())
 
     def test_created_at_updated_at(self):
         """Test created_at and updated_at attributes."""
