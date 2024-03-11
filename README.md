@@ -9,7 +9,7 @@ The Command Interpreter serves as the primary interface for interacting with the
 ### How to start it:
 - Clone the repository to your local machine.
 - Navigate to the project directory.
--Run the command ./console.py to start the Command Interpreter.
+- Run the command ./console.py to start the Command Interpreter.
 
 ### How to use it:
 - Using commands to interact with the application:
