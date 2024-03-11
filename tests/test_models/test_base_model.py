@@ -84,14 +84,9 @@ class TestBase(unittest.TestCase):
     def test_save_method(self):
         """Test save method"""
         base_model = BaseModel()
+        first_updated_at = base_model.updated_at
         base_model.save()
-        self.assertIsInstance(base_model.updated_at, datetime.datetime)
-
-    def test_one_save(self):
-        bm = BaseModel()
-        first_updated_at = bm.updated_at
-        bm.save()
-        self.assertLess(first_updated_at, bm.updated_at)
+        self.assertLess(first_updated_at, base_model.updated_at)     
 
     def test_created_at_updated_at(self):
         """Test created_at and updated_at attributes."""
