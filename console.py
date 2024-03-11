@@ -15,7 +15,7 @@ import json
 
 class HBNBCommand(cmd.Cmd):
     """Interactive command line interface."""
-    prompt = '(hbnb)'
+    prompt = '(hbnb) '
     __classes = {"BaseModel", "User", "State", "City",
                  "Amenity", "Place", "Review"}
 
@@ -145,7 +145,7 @@ class HBNBCommand(cmd.Cmd):
                         attr_value = args[3]
                         if attr_name in {'id', 'created_at', 'updated_at'}:
                             return
-                        elif attr_name not in obj.keys():
+                        elif attr_name not in obj.items():
                             setattr(obj, attr_name, attr_value)
                         else:
                             attr_type = type(obj.__class__.__dict__[attr_name])
