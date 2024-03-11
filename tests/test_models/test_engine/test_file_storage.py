@@ -11,7 +11,6 @@ class TestFileStorage(unittest.TestCase):
         """Set up test environment."""
         # Create an instance of FileStorage
         self.storage = FileStorage()
-        self.storage.__objects.clear()
 
     def tearDown(self):
         """Clean up after the test."""
