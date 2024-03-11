@@ -6,7 +6,7 @@ import os
 
 class TestBase(unittest.TestCase):
     """Unit tests for the BaseModel."""
-    
+
     def setUp(self):
         """Set up test environment."""
         # Create an instance of FileStorage
