@@ -1,4 +1,5 @@
 import unittest
+import models
 from models.base_model import BaseModel
 from models.engine.file_storage import FileStorage
 import datetime
@@ -23,6 +24,8 @@ class TestBase(unittest.TestCase):
         """Test initialization of BaseModel."""
         # Testing instance without kwargs
         base_model = BaseModel()
+        self.assertEqual(BaseModel, type(base_model))
+        self.assertIn(base_model, models.storage.all().values())
         self.assertIsInstance(base_model, BaseModel)
         self.assertIsNotNone(base_model.id)
         self.assertIsInstance(base_model.created_at, datetime.datetime)
