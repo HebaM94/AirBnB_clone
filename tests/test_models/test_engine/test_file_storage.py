@@ -20,6 +20,7 @@ class TestFileStorage(unittest.TestCase):
         # Remove the file created during testing
         if os.path.exists("file.json"):
             os.remove("file.json")
+        FileStorage._FileStorage__objects = {}
 
     def test_all(self):
         """Test the all() method."""
