@@ -48,8 +48,8 @@ class TestFileStorage(unittest.TestCase):
 
         # Reload the data and check if the object is present
         new_storage = FileStorage()
-        self.storage.reload()
-        self.assertIn("BaseModel." + obj.id, self.storage.all())
+        new_storage.reload()
+        self.assertIn("BaseModel." + obj.id, new_storage.all())
 
     def test_save_with_arg(self):
         with self.assertRaises(TypeError):
