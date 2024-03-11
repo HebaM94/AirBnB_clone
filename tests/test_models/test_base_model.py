@@ -86,6 +86,8 @@ class TestBase(unittest.TestCase):
         base_model = BaseModel()
         base_model.save()
         self.assertIsInstance(base_model.updated_at, datetime.datetime)
+        with self.assertRaises(TypeError):
+            base_model.save(None)
 
     def test_created_at_updated_at(self):
         """Test created_at and updated_at attributes."""
