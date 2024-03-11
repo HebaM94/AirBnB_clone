@@ -1,6 +1,7 @@
 import unittest
 from models.user import User
 
+
 class TestUser(unittest.TestCase):
     """Testing User class"""
 
@@ -20,11 +21,12 @@ class TestUser(unittest.TestCase):
         user.password = "te3ebt*"
         user.first_name = "Hebas"
         user.last_name = "Team"
-        
+
         self.assertEqual(user.email, "alx@gmail.com")
         self.assertEqual(user.password, "te3ebt*")
         self.assertEqual(user.first_name, "Hebas")
         self.assertEqual(user.last_name, "Team")
+
 
 if __name__ == '__main__':
     unittest.main()

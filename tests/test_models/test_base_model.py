@@ -57,8 +57,10 @@ class TestBase(unittest.TestCase):
         self.assertEqual(
             base_model_dict['__class__'], base_model.__class__.__name__)
         self.assertEqual(base_model_dict['id'], base_model.id)
-        self.assertEqual(base_model_dict['created_at'], base_model.created_at.isoformat())
-        self.assertEqual(base_model_dict['updated_at'], base_model.updated_at.isoformat())
+        self.assertEqual(
+            base_model_dict['created_at'], base_model.created_at.isoformat())
+        self.assertEqual(
+            base_model_dict['updated_at'], base_model.updated_at.isoformat())
 
     def test_str(self):
         """Test __str__ method"""

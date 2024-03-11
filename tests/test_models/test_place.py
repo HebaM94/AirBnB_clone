@@ -1,6 +1,7 @@
 import unittest
 from models.place import Place
 
+
 class TestPlace(unittest.TestCase):
     """Testing Place class"""
 
@@ -46,6 +47,7 @@ class TestPlace(unittest.TestCase):
         self.assertEqual(place.latitude, 42.8126)
         self.assertEqual(place.longitude, -69.0040)
         self.assertEqual(place.amenity_ids, ["wifi", "pool"])
+
 
 if __name__ == '__main__':
     unittest.main()
