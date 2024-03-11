@@ -131,7 +131,9 @@ class HBNBCommand(cmd.Cmd):
                         obj = storage.all().__class__.__dict__
                         attr_name = args[2]
                         attr_value = args[3]
-                        if attr_name not in obj.keys():
+                        if attr_name in {'id', 'created_at', 'updated_at'}:
+                            return
+                        elif attr_name not in obj.keys():
                             obj[key].__setattr__(self, attr_name, attr_value)
                         else:
                             obj[key].__dict__[attr_name] = attr_value
