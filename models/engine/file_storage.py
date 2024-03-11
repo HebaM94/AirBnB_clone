@@ -38,6 +38,7 @@ class FileStorage:
                 self.__objects = {}
                 for key, value in loaded_objects.items():
                     class_name = value['__class__']
+                    del value['__class__']
                     obj = eval(class_name)(**value)
                     self.__objects[key] = obj
         except FileNotFoundError:
