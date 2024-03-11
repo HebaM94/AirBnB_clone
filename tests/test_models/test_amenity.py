@@ -14,8 +14,8 @@ class TestAmenity(unittest.TestCase):
     def test_attribute_setting(self):
         """Test setting attributes of Amenity"""
         amenity = Amenity()
-        amenity.name = "Pool"
-        self.assertEqual(amenity.name, "Pool")
+        amenity.name = "pool"
+        self.assertEqual(amenity.name, "pool")
 
 if __name__ == '__main__':
     unittest.main()
