@@ -7,9 +7,9 @@ This Project is a copy of the AirBnB Web Application.
 The Command Interpreter serves as the primary interface for interacting with the Airbnb Clone application.
 
 ### How to start it:
-Clone the repository to your local machine.
-Navigate to the project directory.
-Run the command ./console.py to start the Command Interpreter.
+- Clone the repository to your local machine.
+- Navigate to the project directory.
+-Run the command ./console.py to start the Command Interpreter.
 
 ### How to use it:
 - Using commands to interact with the application:
