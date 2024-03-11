@@ -1,4 +1,5 @@
 import unittest
+import models
 from models.engine.file_storage import FileStorage
 from models.base_model import BaseModel
 import os
@@ -43,11 +44,16 @@ class TestFileStorage(unittest.TestCase):
         obj = BaseModel()
         self.storage.new(obj)
         self.storage.save()
+        
 
         # Reload the data and check if the object is present
         new_storage = FileStorage()
         new_storage.reload()
         self.assertIn("BaseModel." + obj.id, new_storage.all())
+
+    def test_save_with_arg(self):
+        with self.assertRaises(TypeError):
+            models.storage.save(None)
 
 
 if __name__ == '__main__':
