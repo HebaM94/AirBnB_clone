@@ -54,7 +54,8 @@ class TestBase(unittest.TestCase):
         self.assertIn('id', base_model_dict)
         self.assertIn('created_at', base_model_dict)
         self.assertIn('updated_at', base_model_dict)
-        self.assertEqual(base_model_dict['__class__'], base_model.__class__.__name__)
+        self.assertEqual(
+            base_model_dict['__class__'], base_model.__class__.__name__)
         self.assertEqual(base_model_dict['id'], base_model.id)
         self.assertEqual(base_model_dict['created_at'], base_model.created_at.isoformat())
         self.assertEqual(base_model_dict['updated_at'], base_model.updated_at.isoformat())
@@ -91,7 +92,7 @@ class TestBase(unittest.TestCase):
         """Test the save() method."""
         # Create a BaseModel instance
         base_model = BaseModel()
-        
+
         # Add the object to the storage
         self.storage.new(base_model)
 
