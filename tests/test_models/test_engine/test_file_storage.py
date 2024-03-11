@@ -43,14 +43,22 @@ class TestFileStorage(unittest.TestCase):
         """Test the save() and reload() methods."""
         # Add an object and save it
         obj = BaseModel()
-        models.storage.new(obj)
-        models.storage.save()
+        self.storage.new(obj)
+        self.storage.save()
         
 
         # Reload the data and check if the object is present
-        models.storage.reload()
-        objs = FileStorage._FileStorage__objects
-        self.assertIn("BaseModel." + obj.id, objs)
+        new_storage = FileStorage()
+        new_storage.reload()
+        self.assertIn("BaseModel." + obj.id, new_storage.all())
+
+    def test_reload(self):
+            bm = BaseModel()
+            models.storage.new(bm)
+            models.storage.save()
+            models.storage.reload()
+            objs = FileStorage._FileStorage__objects
+            self.assertIn("BaseModel." + bm.id, objs)
 
     def test_save_with_arg(self):
         with self.assertRaises(TypeError):
