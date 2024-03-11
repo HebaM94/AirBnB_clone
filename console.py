@@ -145,7 +145,7 @@ class HBNBCommand(cmd.Cmd):
                         attr_value = args[3]
                         if attr_name in {'id', 'created_at', 'updated_at'}:
                             return
-                        elif attr_name not in obj.items():
+                        elif attr_name not in obj.__class__.__dict__.keys():
                             setattr(obj, attr_name, attr_value)
                         else:
                             attr_type = type(obj.__class__.__dict__[attr_name])
