@@ -92,6 +92,7 @@ ul{
 @media screen and (max-width: 768px) {
     .filters {
         text-align: center;
+        width: 100%;
     }
     section.filters button {
         width: 80%;
