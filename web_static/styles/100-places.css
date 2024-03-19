@@ -127,12 +127,79 @@ article h2{
     color: #484848;
     text-align: left;
     margin-top: 15px;
-    margin-left: 10px;
+    margin-left: 0px;
 }
 .description{
     font-size: 14px;
     text-align: left;
     margin-top: 7px;
     margin-bottom: 0px;
-    margin-left: 10px;
+    margin-left: 0px;
+}
+.data .amenities,
+.reviews {
+    margin-top: 40px;
+    width: 100%;
+    height: inherit;
+}
+.data .amenities ul,
+.reviews ul {
+    list-style-type: none;
+    padding: 0;
+}
+.data .amenities h2,
+.reviews h2 {
+    font-size: 16px;
+    text-align: left;
+    border-bottom: 1px solid #DDDDDD;
+    padding-bottom: 10px;
+}
+.reviews h3 {
+    font-size: 14px;  
+    margin-left: -45px;
+}
+.reviews p {
+    font-size: 12px;
+    padding-bottom: -20px;
+}
+.reviews h3,
+.reviews p{
+    text-align: left;
+    margin-bottom: -10px;
+}
+.reviews ul li{
+    margin-bottom: -15px;
+    margin-top: -10px;
+}
+.data .amenities ul li{
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
+    align-content: center;
+    margin-bottom: -10px;
+    margin-top: -10px;
+    align-items: center;
+    font-size: 14px;
+  }
+
+.pet_friendly {
+    background-image: url(../images/icon_pets.png);
+}
+.tv {
+    background-image: url(../images/icon_tv.png);
+}
+.wifi {
+    background-image: url(../images/icon_wifi.png);
+}
+
+.pet_friendly,
+.tv,
+.wifi {
+    background-size: cover;
+    background-repeat: no-repeat;
+    margin-left: 0px;
+    margin-right: 10px;
+    width: 20px;
+    height: 20px;
+    display: inline-block;
 }
